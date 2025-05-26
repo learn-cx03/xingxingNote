@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import {
+  Routes,
+  Route
+} from "react-router-dom"
 
+
+import routes from '@/router'
 function App() {
-  const [count, setCount] = useState(0)
-  
-  useEffect(() => {
-    setTimeout(() => {
-      console.log('点击次数: ' + count);
-    }, 3000);
-  })
-
   return (
-    <div className="App">
-      <button onClick={() => setCount(count + 1)}>点击{count}次</button>
-    </div>
+    <Routes>
+      {routes.map(route => <Route exact key={route.path} path={route.path} element={<route.component />} />)}
+    </Routes>
   )
 }
 
